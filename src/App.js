@@ -1,50 +1,50 @@
 import React from 'react';
 import './App.css';
 
-const ESSENTIALS = {
-  "Rucksack": false,
+const Essentials = {
+  "Rucksack": true,
   "Sleeping Bag": false,
   "Sleeping Mat": false,
   "Cutlery": false,
-  "Plate/Bowl": false,
+  "Plate/Bowl": true,
   "Mug": false,
   "Sunscreen": false,
   "Insect Repellant": false,
 };
 
-const CLOTHING = {
-  "Shoes/Boots": false,
-  "Camp Shoes": false,
-  "Socks": false,
-  "Hiking pants/shorts": false,
-  "Thermals": false,
-  "Hat": false,
-  "Beanie": false,
-  "Sunglasses": false,
-  "Mid layer / Fleece top": false,
-  "Long/Short sleeve shirt": false,
-  "Rain Jacket": false,
-};
+// const Clothing = {
+//   "Shoes/Boots": false,
+//   "Camp Shoes": false,
+//   "Socks": false,
+//   "Hiking pants/shorts": false,
+//   "Thermals": false,
+//   "Hat": false,
+//   "Beanie": false,
+//   "Sunglasses": false,
+//   "Mid layer / Fleece top": false,
+//   "Long/Short sleeve shirt": false,
+//   "Rain Jacket": false,
+// };
 
-const FOOD = {
-  "Water bottles": false,
-  "Breakfast": false,
-  "Lunch": false,
-  "Dinner": false,
-};
+// const Food = {
+//   "Water bottles": false,
+//   "Breakfast": false,
+//   "Lunch": false,
+//   "Dinner": false,
+// };
 
-const EXTRAS = {
-  "Tent": false,
-  "Stove": false,
-  "Fuel": false,
-  "Lighter/Matches": false,
-  "Pots/Pans": false,
-  "First Aid Kit": false,
-  "Headlamp": false,
-  "Multi Tool / Knife": false,
-  "Pack Liner/Garbage Bag": false,
-  "Phone/Watch": false,
-};
+// const Extras = {
+//   "Tent": false,
+//   "Stove": false,
+//   "Fuel": false,
+//   "Lighter/Matches": false,
+//   "Pots/Pans": false,
+//   "First Aid Kit": false,
+//   "Headlamp": false,
+//   "Multi Tool / Knife": false,
+//   "Pack Liner/Garbage Bag": false,
+//   "Phone/Watch": false,
+// };
 
 class Header extends React.Component {
   render() {
@@ -68,17 +68,26 @@ class Header extends React.Component {
 class Category extends React.Component {
   constructor(props) {
     super(props)
+    
+    this.handleImageClick = this.handleImageClick.bind(this);
   }
+
+  handleImageClick() {
+    console.log("Inside HandleImageClick");
+  }
+
   render() {
     return ( 
     <section className="py-2">
         <h2 className="row pl-3 pb-1 font-weight-bold">{this.props.name}</h2>
-        { Object.keys(ESSENTIALS).map((k,v) => {
-          return <div className="row text-left">
+        { Object.keys(Essentials).map((k,v) => {
+          return <div className="row text-left" key={`${k}-${v}`}>
             <p className="col pl-3">{k}</p>
-            <img className="col" src="checked.svg" alt="tick-check">
-
-            </img>
+            {k.v ?
+            <img className="col" src="checked.svg" alt="tick-check" onClick={this.handleImageClick}></img> :
+            <img className="col" src="unchecked.svg" alt="untick-check" onClick={this.handleImageClick}></img> 
+            }
+            <div className="col"></div>
           </div>;
         })
 
