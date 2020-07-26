@@ -9,7 +9,7 @@
 .header-button {
   height: 3.5vh;
 }
-img {
+img, .tickbox-circle {
   height: 3vh;
 }
 .col, .row {

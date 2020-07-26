@@ -2,18 +2,18 @@ import React from 'react';
 import './App.css';
 
 const Essentials = {
-  "Rucksack": true,
-  "Sleeping Bag": true,
+  "Rucksack": false,
+  "Sleeping Bag": false,
   "Sleeping Mat": false,
   "Cutlery": false,
-  "Plate/Bowl": true,
+  "Plate/Bowl": false,
   "Mug": false,
   "Water bottles": false,
   "Sunscreen": false,
   "Insect Repellant": false,
 };
 
-const Clothing = {
+const Clothing = {  
   "Shoes/Boots": false,
   "Camp Shoes": false,
   "Socks": false,
@@ -68,41 +68,35 @@ class Header extends React.Component {
 class Category extends React.Component {
   constructor(props) {
     super(props);
-    
-    this.handleImageClick = this.handleImageClick.bind(this);
-  }
 
-  handleImageClick() {
-    //toggle
-    console.log("Inside HandleImageClick");
+    this.state = {
+      essentials: Essentials,
+      clothing: Clothing,
+      food: Food,
+      extras: Extras 
+    }
   }
 
   render() {
     let category = {};
     switch (this.props.name) {
       case "Essentials": 
-        category = Essentials; break;
+        category = this.state.essentials; break;
       case "Clothing": 
-        category = Clothing; break;
+        category = this.state.clothing; break;
       case "Food": 
-        category = Food; break;
+        category = this.state.food; break;
       default: 
-        category = Extras; break;
+        category = this.state.extras; break;
     };
 
     return ( 
     <section className="py-2">
         <h2 className="row pl-3 pb-1 font-weight-bold">{this.props.name}</h2>
         { Object.keys(category).map((k,v) => {
-          return <div className="row text-left" key={`${k}-${v}`}>
-            <p className="col-8 pl-3 pt-1">{k}</p>
-            { category[k] ? 
-              <img className="col-2" src="checked.svg" alt="tick-check" onClick={this.handleImageClick}></img> :
-              <img className="col-2" src="unchecked.svg" alt="untick-check" onClick={this.handleImageClick}></img> 
-            }
-            <img className="col-2" src="more-info.svg" alt="more-info" onClick={this.handleImageClick}></img>
-          </div>;
-        })
+          return (
+              <Item k={k} cat={category} />
+        )})
 
         }
     </section>
@@ -113,11 +107,36 @@ class Category extends React.Component {
 class Item extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      itemKey: this.props.k,
+      itemCategory: this.props.cat,
+      isChecked: false
+    };
+
+    this.handleChecked = this.handleChecked.bind(this);
+    this.handleInfoClick = this.handleInfoClick.bind(this);
   }
+  handleChecked() {
+    this.setState({ isChecked: !this.state.isChecked });
+  } 
+
+  handleInfoClick() {
+    console.log("Inside HandleInfoClick");
+  }
+
   render() {
+    const itemKey = this.state.itemKey;
+    const itemCategory= this.state.itemCategory;
+
     return ( 
-    <div>
-      
+      <div className="row text-left" key={`${itemKey}-${itemCategory}`}>
+      <p className="col-8 pl-3 pt-1">{itemKey}</p>
+        { this.state.isChecked ? 
+          <input type="image" className="col-2 tickbox-circle" value={this.state.isChecked} src="checked.svg" alt="tick-check" onClick={this.handleChecked}></input> :
+          <input type="image" className="col-2 tickbox-circle" value={this.state.isChecked} src="unchecked.svg" alt="untick-check" onClick={this.handleChecked}></input>
+        }
+      <img className="col-2" src="more-info.svg" alt="more-info" onClick={this.handleInfoClick}></img>
     </div>
     )}
 }
