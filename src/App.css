@@ -1,20 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&family=Raleway&display=swap');
+
 .header-style {
   background-color: #222625;
-  color: #fff;
 }
+
 .header-logo {
   height: 8vh;
   background-color: #222625;
 }
+
 .col {
   padding: 0px
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Quicksand";
 }
 
-.App-link {
-  color: #61dafb;
+p {
+  font-family: "Raleway";
 }
