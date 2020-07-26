@@ -67,7 +67,7 @@ class Header extends React.Component {
 
 class Category extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     
     this.handleImageClick = this.handleImageClick.bind(this);
   }
@@ -97,17 +97,17 @@ class Category extends React.Component {
 
 } 
 
-class Item extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-  render() {
-    return ( 
-    <div>
+// class Item extends React.Component {
+//   constructor(props) {
+//     super(props);
+//   }
+//   render() {
+//     return ( 
+//     <div>
       
-    </div>
-    )}
-}
+//     </div>
+//     )}
+// }
 
 function App() {
   return (
