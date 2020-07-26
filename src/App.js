@@ -1,21 +1,56 @@
 import React from 'react';
 import './App.css';
 
-const items = {
+const ESSENTIALS = {
   "Rucksack": false,
-  "Tent": false,
-  "Food": false,
   "Sleeping Bag": false,
   "Sleeping Mat": false,
+  "Cutlery": false,
+  "Plate/Bowl": false,
+  "Mug": false,
+  "Sunscreen": false,
+  "Insect Repellant": false,
+};
+
+const CLOTHING = {
+  "Shoes/Boots": false,
+  "Camp Shoes": false,
+  "Socks": false,
+  "Hiking pants/shorts": false,
+  "Thermals": false,
+  "Hat": false,
+  "Beanie": false,
+  "Sunglasses": false,
+  "Mid layer / Fleece top": false,
+  "Long/Short sleeve shirt": false,
   "Rain Jacket": false,
+};
+
+const FOOD = {
   "Water bottles": false,
+  "Breakfast": false,
+  "Lunch": false,
+  "Dinner": false,
+};
+
+const EXTRAS = {
+  "Tent": false,
+  "Stove": false,
+  "Fuel": false,
+  "Lighter/Matches": false,
+  "Pots/Pans": false,
+  "First Aid Kit": false,
+  "Headlamp": false,
+  "Multi Tool / Knife": false,
+  "Pack Liner/Garbage Bag": false,
+  "Phone/Watch": false,
 };
 
 class Header extends React.Component {
   render() {
     return (
       <div className="header-style row py-3">
-          <div className="col pl-5">
+          <div className="col pl-2">
           <a href="http://www.trekoa.com">
             <img className="header-logo" src="trekoa-logo.png" alt="trekoa-logo"></img>
           </a>
@@ -36,9 +71,19 @@ class Category extends React.Component {
   }
   render() {
     return ( 
-    <div>
-        <h3 className="row pl-3 pb-2">{this.props.name}</h3>
-    </div>
+    <section className="py-2">
+        <h2 className="row pl-3 pb-1 font-weight-bold">{this.props.name}</h2>
+        { Object.keys(ESSENTIALS).map((k,v) => {
+          return <div className="row text-left">
+            <p className="col pl-3">{k}</p>
+            <img className="col" src="checked.svg" alt="tick-check">
+
+            </img>
+          </div>;
+        })
+
+        }
+    </section>
     )}
 
 } 
@@ -60,17 +105,12 @@ function App() {
     <div className="container-fluid">
       <Header />
       <section className="row">
-        <h2 className="col py-3 pl-3">Have you packed everything?</h2>
+        <h1 className="col py-3 text-center font-weight-bold">Have you packed everything?</h1>
       </section>
-      <section>
         <Category name="Essentials" />
-        <div className="row">
-          <div className="col text-center">Rucksack</div>
-          <div className="col text-center">Sleeping Mat</div>
-          <div className="col text-center">Sleeping Bag</div>
-          <div className="col text-center">Rucksack</div>
-        </div>
-      </section>
+        <Category name="Clothing" />
+        <Category name="Food" />
+        <Category name="Extras" />
     </div>
   );
 }
