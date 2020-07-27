@@ -90,6 +90,7 @@ class Category extends React.Component {
     super(props);
 
     //lift state from Item
+    this.state = {}
   }
 
   render() {
