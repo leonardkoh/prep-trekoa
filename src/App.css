@@ -1,5 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand&family=Raleway&display=swap');
 
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Quicksand";
+}
+h1 {
+  font-size: 1.5em;
+}
+h2 {
+  font-size: 1.3em;
+}
+
+p {
+  font-family: "Raleway";
+  line-height: 0.7em;
+  font-size: 1em;
+}
+
 .header-style,.header-logo {
   background-color: #222625;
 }
@@ -15,25 +31,11 @@ img, .tickbox-circle {
 .col, .row {
   padding: 0px;
 }
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: "Quicksand";
-}
-h1 {
-  font-size: 1.5em;
-}
-h2 {
-  font-size: 1.3em;
-}
-
-p, body {
-  font-family: "Raleway";
-  line-height: 0.7em;
-}
-p {
+.info-text {
+  line-height: 1em;
   font-size: 1em;
+  color: lightslategray;
+  font-weight: 100;
 }
 
-/* .btn-primary {
-  background-color: #FE5C00;
-} */
+

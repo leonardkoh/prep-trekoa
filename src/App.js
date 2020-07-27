@@ -19,7 +19,7 @@ const ESSENTIALS_INFO = {
     "Sleeping Mat": "3cm thick for comfort. Can choose to go sleeping pad for budget, self inflating mat for ease or inflatable mat for a good nights sleep. Don't forget to bring repair patches just incase :)",
     "Cutlery": "Robust and lightweight, preferably something aluminium or titanium for longevity",
     "Plate/Bowl": "One that doubles up for both would be best, if you had to choose one we would recommend picking a bowl over a plate for versatility",
-    "Mug": "Something rigid and packable will do :)",
+    "Mug": "Something rigid and packable will be great :)",
     "Water bottles": "2-4L capacity. Would recommend a water bottle over hydration bladder just incase things break :)",
     "Sunscreen": "50ml tube. Sunscreen with insect repellant infused are the best bang for buck",
     "Insect Repellant": "50ml tube. Insect repellant with sunscreen properties are a wise choice",
@@ -81,19 +81,17 @@ class Category extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      // essentials: Essentials,
-      // clothing: Clothing,
-      // food: Food,
-      // extras: Extras 
-    }
+    //lift state from Item
   }
 
   render() {
     let category = {};
+    let categoryInfo = {};
     switch (this.props.name) {
       case "Essentials": 
-        category = ESSENTIALS; break;
+        category = ESSENTIALS; 
+        categoryInfo = ESSENTIALS_INFO;
+        break;
       case "Clothing": 
         category = CLOTHING; break;
       case "Food": 
@@ -107,9 +105,8 @@ class Category extends React.Component {
         <h2 className="row pl-3 pb-1 font-weight-bold">{this.props.name}</h2>
         { Object.keys(category).map((k,v) => {
           return (
-              <Item k={k} cat={category} />
-        )})
-
+              <Item k={k} cat={category} itemInfo={categoryInfo[k]}/>
+          )})
         }
     </section>
     )}
@@ -122,21 +119,25 @@ class Item extends React.Component {
 
     this.state = {
       isChecked: false,
-      information: ""
+      showInfo: false
     };
 
     this.handleChecked = this.handleChecked.bind(this);
+    this.handleInfoClick = this.handleInfoClick.bind(this);
   }
 
   handleChecked() {
     this.setState({ isChecked: !this.state.isChecked });
   } 
 
+  handleInfoClick() {
+    this.setState({ showInfo: !this.state.showInfo });
+  }
   render() {
     const itemKey = this.props.k;
     const itemCategory= this.props.cat;
     const isChecked = this.state.isChecked;
-    const info = this.state.information;
+    const showInfo = this.state.showInfo;
 
     return ( 
       <div className="row text-left" key={`${itemKey}-${itemCategory}`}>
@@ -145,25 +146,12 @@ class Item extends React.Component {
           <input type="image" className="col-2 tickbox-circle" value={isChecked} src="checked.svg" alt="tick-check" onClick={this.handleChecked}></input> :
           <input type="image" className="col-2 tickbox-circle" value={isChecked} src="unchecked.svg" alt="untick-check" onClick={this.handleChecked}></input>
         }
-      <input type="image" data-toggle="modal" data-target="#itemModal" className="col-2 tickbox-circle" src="more-info.svg" alt="more-info"></input>
-      <div className="modal fade" id="itemModal" tabIndex="-1" role="dialog" aria-labelledby="moreInfoTitle" aria-hidden="true">
-        <div className="modal-dialog modal-dialog-centered" role="document">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title" id="itemModalTitle">More Info</h5>
-              <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div className="modal-body">
-              {info}
-            </div>
-            <div className="modal-footer">
-              <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-          </div>
-        </div>
-      </div>
+      <input type="image" className="col-2 tickbox-circle" src="more-info.svg" alt="more-info" onClick={this.handleInfoClick}></input>
+        { showInfo ? 
+          <div className="info-text pb-3 px-3">{this.props.itemInfo}</div> : 
+          <p></p> 
+        }
+      
     </div>
     )}
 }
