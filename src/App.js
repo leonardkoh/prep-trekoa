@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 
-const Essentials = {
+const ESSENTIALS = {
   "Rucksack": false,
   "Sleeping Bag": false,
   "Sleeping Mat": false,
@@ -13,7 +13,19 @@ const Essentials = {
   "Insect Repellant": false,
 };
 
-const Clothing = {  
+const ESSENTIALS_INFO = {
+    "Rucksack": "A 65-70L pack with an internal frame recommended",
+    "Sleeping Bag": "Ideally lightweight and packable. Take note of the low and extreme ratings of your sleeping bag and whether you're a cold or warm sleeper",
+    "Sleeping Mat": "3cm thick for comfort. Can choose to go sleeping pad for budget, self inflating mat for ease or inflatable mat for a good nights sleep. Don't forget to bring repair patches just incase :)",
+    "Cutlery": "Robust and lightweight, preferably something aluminium or titanium for longevity",
+    "Plate/Bowl": "One that doubles up for both would be best, if you had to choose one we would recommend picking a bowl over a plate for versatility",
+    "Mug": "Something rigid and packable will do :)",
+    "Water bottles": "2-4L capacity. Would recommend a water bottle over hydration bladder just incase things break :)",
+    "Sunscreen": "50ml tube. Sunscreen with insect repellant infused are the best bang for buck",
+    "Insect Repellant": "50ml tube. Insect repellant with sunscreen properties are a wise choice",
+};
+
+const CLOTHING = {  
   "Shoes/Boots": false,
   "Camp Shoes": false,
   "Socks": false,
@@ -27,13 +39,13 @@ const Clothing = {
   "Rain Jacket": false,
 };
 
-const Food = {
+const FOOD = {
   "Breakfast": false,
   "Lunch": false,
   "Dinner": false,
 };
 
-const Extras = {
+const EXTRAS = {
   "Tent": false,
   "Stove": false,
   "Fuel": false,
@@ -70,10 +82,10 @@ class Category extends React.Component {
     super(props);
 
     this.state = {
-      essentials: Essentials,
-      clothing: Clothing,
-      food: Food,
-      extras: Extras 
+      // essentials: Essentials,
+      // clothing: Clothing,
+      // food: Food,
+      // extras: Extras 
     }
   }
 
@@ -81,13 +93,13 @@ class Category extends React.Component {
     let category = {};
     switch (this.props.name) {
       case "Essentials": 
-        category = this.state.essentials; break;
+        category = ESSENTIALS; break;
       case "Clothing": 
-        category = this.state.clothing; break;
+        category = CLOTHING; break;
       case "Food": 
-        category = this.state.food; break;
+        category = FOOD; break;
       default: 
-        category = this.state.extras; break;
+        category = EXTRAS; break;
     };
 
     return ( 
@@ -109,34 +121,49 @@ class Item extends React.Component {
     super(props);
 
     this.state = {
-      itemKey: this.props.k,
-      itemCategory: this.props.cat,
-      isChecked: false
+      isChecked: false,
+      information: ""
     };
 
     this.handleChecked = this.handleChecked.bind(this);
-    this.handleInfoClick = this.handleInfoClick.bind(this);
   }
+
   handleChecked() {
     this.setState({ isChecked: !this.state.isChecked });
   } 
 
-  handleInfoClick() {
-    console.log("Inside HandleInfoClick");
-  }
-
   render() {
-    const itemKey = this.state.itemKey;
-    const itemCategory= this.state.itemCategory;
+    const itemKey = this.props.k;
+    const itemCategory= this.props.cat;
+    const isChecked = this.state.isChecked;
+    const info = this.state.information;
 
     return ( 
       <div className="row text-left" key={`${itemKey}-${itemCategory}`}>
       <p className="col-8 pl-3 pt-1">{itemKey}</p>
-        { this.state.isChecked ? 
-          <input type="image" className="col-2 tickbox-circle" value={this.state.isChecked} src="checked.svg" alt="tick-check" onClick={this.handleChecked}></input> :
-          <input type="image" className="col-2 tickbox-circle" value={this.state.isChecked} src="unchecked.svg" alt="untick-check" onClick={this.handleChecked}></input>
+        { isChecked ? 
+          <input type="image" className="col-2 tickbox-circle" value={isChecked} src="checked.svg" alt="tick-check" onClick={this.handleChecked}></input> :
+          <input type="image" className="col-2 tickbox-circle" value={isChecked} src="unchecked.svg" alt="untick-check" onClick={this.handleChecked}></input>
         }
-      <img className="col-2" src="more-info.svg" alt="more-info" onClick={this.handleInfoClick}></img>
+      <input type="image" data-toggle="modal" data-target="#itemModal" className="col-2 tickbox-circle" src="more-info.svg" alt="more-info"></input>
+      <div className="modal fade" id="itemModal" tabIndex="-1" role="dialog" aria-labelledby="moreInfoTitle" aria-hidden="true">
+        <div className="modal-dialog modal-dialog-centered" role="document">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="itemModalTitle">More Info</h5>
+              <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div className="modal-body">
+              {info}
+            </div>
+            <div className="modal-footer">
+              <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     )}
 }
@@ -146,7 +173,7 @@ function App() {
     <div className="container-fluid">
       <Header />
       <section className="row">
-        <h1 className="col py-3 text-center font-weight-bold">Duke of Ed Pack List</h1>
+        <h1 className="col py-3 text-center font-weight-bold">Have you got everything?</h1>
       </section>
         <Category name="Essentials" />
         <Category name="Clothing" />
