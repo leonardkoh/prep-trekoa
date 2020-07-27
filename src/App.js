@@ -171,7 +171,7 @@ function App() {
     <div className="container-fluid">
       <Header />
       <section className="row">
-        <h1 className="col py-3 text-center font-weight-bold">Don't forget your smile :)</h1>
+        <h1 className="col py-3 text-center font-weight-bold">Duke of Ed Checklist</h1>
       </section>
         <Category name="Essentials" />
         <Category name="Food" />
