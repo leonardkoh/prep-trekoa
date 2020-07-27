@@ -7,13 +7,12 @@ h1 {
   font-size: 1.5em;
 }
 h2 {
-  font-size: 1.3em;
+  font-size: 1.25em;
 }
 
 p {
   font-family: "Raleway";
   line-height: 0.7em;
-  font-size: 1em;
 }
 
 .header-style,.header-logo {
@@ -33,7 +32,6 @@ img, .tickbox-circle {
 }
 .info-text {
   line-height: 1em;
-  font-size: 1em;
   color: lightslategray;
   font-weight: 100;
 }

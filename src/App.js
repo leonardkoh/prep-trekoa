@@ -14,13 +14,13 @@ const ESSENTIALS = {
 };
 
 const ESSENTIALS_INFO = {
-    "Rucksack": "A 65-70L pack with an internal frame recommended",
-    "Sleeping Bag": "Ideally lightweight and packable. Take note of the low and extreme ratings of your sleeping bag and whether you're a cold or warm sleeper",
-    "Sleeping Mat": "3cm thick for comfort. Can choose to go sleeping pad for budget, self inflating mat for ease or inflatable mat for a good nights sleep. Don't forget to bring repair patches just incase :)",
-    "Cutlery": "Robust and lightweight, preferably something aluminium or titanium for longevity",
-    "Plate/Bowl": "One that doubles up for both would be best, if you had to choose one we would recommend picking a bowl over a plate for versatility",
+    "Rucksack": "A 65-70L pack with an internal frame is recommended. Ensure the pack is well sized and waist belt is effective. Shoulders should not bear pack weight :)",
+    "Sleeping Bag": "Ideally both lightweight and packable. Note the comfort, low and extreme temperature ratings of your sleeping bag and ensure this suits your adventure",
+    "Sleeping Mat": "A 3cm thick sleeping mat is recommended for comfort. Select a foam pad for budget, self inflating mat for ease of deployment or inflatable mat for a good night's sleep. Don't forget to bring repair patches just incase :)",
+    "Cutlery": "1x robust and lightweight spork will do, but hey a knife, fork, spoon set will also do incase you lose the spork. Preferably made of aluminium or titanium for longevity",
+    "Plate/Bowl": "One that doubles up for both would be best :) if you had to choose one we would recommend picking a bowl over a plate for versatility",
     "Mug": "Something rigid and packable will be great :)",
-    "Water bottles": "2-4L capacity. Would recommend a water bottle over hydration bladder just incase things break :)",
+    "Water bottles": "Bottles amounting to 2-4L capacity. Would recommend a water bottle over hydration bladder just incase someone decides to be naughty :)",
     "Sunscreen": "50ml tube. Sunscreen with insect repellant infused are the best bang for buck",
     "Insect Repellant": "50ml tube. Insect repellant with sunscreen properties are a wise choice",
 };
@@ -102,7 +102,7 @@ class Category extends React.Component {
 
     return ( 
     <section className="py-2">
-        <h2 className="row pl-3 pb-1 font-weight-bold">{this.props.name}</h2>
+        <h2 className="row pl-3 pb-1 font-weight-bold"><u>{this.props.name}</u></h2>
         { Object.keys(category).map((k,v) => {
           return (
               <Item k={k} cat={category} itemInfo={categoryInfo[k]}/>
@@ -122,15 +122,15 @@ class Item extends React.Component {
       showInfo: false
     };
 
-    this.handleChecked = this.handleChecked.bind(this);
-    this.handleInfoClick = this.handleInfoClick.bind(this);
+    this.toggleChecked = this.toggleChecked.bind(this);
+    this.toggleMoreInfo = this.toggleMoreInfo.bind(this);
   }
 
-  handleChecked() {
+  toggleChecked() {
     this.setState({ isChecked: !this.state.isChecked });
   } 
 
-  handleInfoClick() {
+  toggleMoreInfo() {
     this.setState({ showInfo: !this.state.showInfo });
   }
   render() {
@@ -143,10 +143,10 @@ class Item extends React.Component {
       <div className="row text-left" key={`${itemKey}-${itemCategory}`}>
       <p className="col-8 pl-3 pt-1">{itemKey}</p>
         { isChecked ? 
-          <input type="image" className="col-2 tickbox-circle" value={isChecked} src="checked.svg" alt="tick-check" onClick={this.handleChecked}></input> :
-          <input type="image" className="col-2 tickbox-circle" value={isChecked} src="unchecked.svg" alt="untick-check" onClick={this.handleChecked}></input>
+          <input type="image" className="col-2 tickbox-circle" value={isChecked} src="checked.svg" alt="tick-check" onClick={this.toggleChecked}></input> :
+          <input type="image" className="col-2 tickbox-circle" value={isChecked} src="unchecked.svg" alt="untick-check" onClick={this.toggleChecked}></input>
         }
-      <input type="image" className="col-2 tickbox-circle" src="more-info.svg" alt="more-info" onClick={this.handleInfoClick}></input>
+      <input type="image" className="col-2 tickbox-circle" src="more-info.svg" alt="more-info" onClick={this.toggleMoreInfo}></input>
         { showInfo ? 
           <div className="info-text pb-3 px-3">{this.props.itemInfo}</div> : 
           <p></p> 
@@ -161,7 +161,7 @@ function App() {
     <div className="container-fluid">
       <Header />
       <section className="row">
-        <h1 className="col py-3 text-center font-weight-bold">Have you got everything?</h1>
+        <h1 className="col py-3 text-center font-weight-bold">Don't forget your smile :)</h1>
       </section>
         <Category name="Essentials" />
         <Category name="Clothing" />
