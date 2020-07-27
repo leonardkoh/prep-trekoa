@@ -14,15 +14,15 @@ const ESSENTIALS = {
 };
 
 const ESSENTIALS_INFO = {
-    "Rucksack": "A 65-70L pack with an internal frame is recommended. Ensure the pack is well sized and waist belt is effective. Shoulders should not bear pack weight :)",
+    "Rucksack": "A 65-70L pack with an internal frame is recommended. Ensure the pack is well sized and the waist belt is effective. Shoulders should not bear pack weight :)",
     "Sleeping Bag": "Ideally both lightweight and packable. Note the comfort, low and extreme temperature ratings of your sleeping bag and ensure this suits your adventure",
     "Sleeping Mat": "A 3cm thick sleeping mat is recommended for comfort. Select a foam pad for budget, self inflating mat for ease of deployment or inflatable mat for a good night's sleep. Don't forget to bring repair patches just incase :)",
-    "Cutlery": "1x robust and lightweight spork will do, but hey a knife, fork, spoon set will also do incase you lose the spork. Preferably made of aluminium or titanium for longevity",
+    "Cutlery": "A robust and lightweight spork will do, but hey a knife, fork, spoon set will also work incase you lose the spork. Preferably something made of aluminium or titanium for longevity",
     "Plate/Bowl": "One that doubles up for both would be best :) if you had to choose one we would recommend picking a bowl over a plate for versatility",
     "Mug": "Something rigid and packable will be great :)",
-    "Water bottles": "Bottles amounting to 2-4L capacity. Would recommend a water bottle over hydration bladder just incase someone decides to be naughty :)",
-    "Sunscreen": "50ml tube. Sunscreen with insect repellant infused are the best bang for buck",
-    "Insect Repellant": "50ml tube. Insect repellant with sunscreen properties are a wise choice",
+    "Water bottles": "Bottles holding to 2-4L capacity. Would recommend a water bottle over hydration bladder just incase someone decides to be naughty :)",
+    "Sunscreen": "50ml tube. Sunscreen with insect repellant infused brings the best of both worlds",
+    "Insect Repellant": "50ml tube. Likewise an insect repellant which doubles up as sunscreen is a wise choice",
 };
 
 const CLOTHING = {  
@@ -43,7 +43,15 @@ const FOOD = {
   "Breakfast": false,
   "Lunch": false,
   "Dinner": false,
+  "Snacks": false,
 };
+
+const FOOD_INFO = {
+  "Breakfast": "Porridge, Oats, Muesli, Cereal. Embrace the grains. (Bronze = 2 Breakfasts, Silver = 3, Gold = 4)",
+  "Lunch": "Pita Bread, Sandwiches, Wraps, Noodles, Tuna and Crackers, Water biscuits (Bronze = 2 Lunches, Silver = 3, Gold = 4)",
+  "Dinner": "Dehydrated meals (Back Country Cuisine), Rice, Cous Cous, Pasta/Risotto, Instant Potato Mash, Cup of Soup (Bronze = 1 Dinner, Silver = 2, Gold = 3)",
+  "Snacks": "Cereal/Energy bars, Dried Fruit and Nuts, Trail Mix, Fruit packs, Rice Crackers Chocolate bars :)"
+}
 
 const EXTRAS = {
   "Tent": false,
@@ -95,7 +103,9 @@ class Category extends React.Component {
       case "Clothing": 
         category = CLOTHING; break;
       case "Food": 
-        category = FOOD; break;
+        category = FOOD; 
+        categoryInfo = FOOD_INFO;
+        break;
       default: 
         category = EXTRAS; break;
     };
@@ -164,8 +174,8 @@ function App() {
         <h1 className="col py-3 text-center font-weight-bold">Don't forget your smile :)</h1>
       </section>
         <Category name="Essentials" />
-        <Category name="Clothing" />
         <Category name="Food" />
+        <Category name="Clothing" />
         <Category name="Extras" />
     </div>
   );
