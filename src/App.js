@@ -153,12 +153,12 @@ class Item extends React.Component {
       <div className="row text-left" key={`${itemKey}-${itemCategory}`}>
       <p className="col-8 pl-3 pt-1">{itemKey}</p>
         { isChecked ? 
-          <input type="image" className="col-2 tickbox-circle" value={isChecked} src="checked.svg" alt="tick-check" onClick={this.toggleChecked}></input> :
-          <input type="image" className="col-2 tickbox-circle" value={isChecked} src="unchecked.svg" alt="untick-check" onClick={this.toggleChecked}></input>
+          <input type="image" className="col-2 tickbox-circle" src="checked.svg" alt="tick-check" onClick={this.toggleChecked}></input> :
+          <input type="image" className="col-2 tickbox-circle" src="unchecked.svg" alt="untick-check" onClick={this.toggleChecked}></input>
         }
-      <input type="image" className="col-2 tickbox-circle" value={showInfo} src="more-info.svg" alt="more-info" onClick={this.toggleMoreInfo}></input>
+        <input type="image" className="col-2 tickbox-circle" value={showInfo} src="more-info.svg" alt="more-info" onClick={this.toggleMoreInfo}></input>
         { showInfo ? 
-          <div className="info-text pb-3 px-3">{this.props.itemInfo}</div> : 
+          <div className="info-text pb-3 px-3">{this.props.itemInfo}</div>: 
           <p></p> 
         }
       
