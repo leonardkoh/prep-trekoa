@@ -14,13 +14,13 @@ const ESSENTIALS = {
 };
 
 const ESSENTIALS_INFO = {
-    "Rucksack": "A 65-70L pack with an internal frame is recommended. Ensure the pack is well sized and the waist belt is effective. Shoulders should not bear pack weight :)",
-    "Sleeping Bag": "Ideally both lightweight and packable. Note the comfort, low and extreme temperature ratings of your sleeping bag and ensure this suits your adventure",
+    "Rucksack": "A 65-70L pack with an internal frame is recommended. Ensure the pack is well sized and the waist belt is effective. Shoulders should not bear pack weight. :)",
+    "Sleeping Bag": "Ideally lightweight and packable. Note the comfort, low and extreme temperature ratings of your sleeping bag and ensure this suits your adventure",
     "Sleeping Mat": "A 3cm thick sleeping mat is recommended for comfort. Select a foam pad for budget, self inflating mat for ease of deployment or inflatable mat for a good night's sleep. Don't forget to bring repair patches just incase :)",
     "Cutlery": "A robust and lightweight spork will do, but hey a knife, fork, spoon set will also work incase you lose the spork. Preferably something made of aluminium or titanium for longevity",
-    "Plate/Bowl": "One that doubles up for both would be best :) if you had to choose one we would recommend picking a bowl over a plate for versatility",
-    "Mug": "Something rigid and packable will be great :)",
-    "Water bottles": "Bottles holding to 2-4L capacity. Would recommend a water bottle over hydration bladder just incase someone decides to be naughty :)",
+    "Plate/Bowl": "One that doubles up for both would be best :) if you had to choose we would recommend picking a bowl over a plate for versatility",
+    "Mug": "Something rigid and packable, don't forget to use the space to store hot cocoa or your favourite drink! :)",
+    "Water bottles": "Bottles amounting to 2-4L capacity. Would recommend a water bottle over hydration bladder just incase someone decides to be naughty :)",
     "Sunscreen": "50ml tube. Sunscreen with insect repellant infused brings the best of both worlds",
     "Insect Repellant": "50ml tube. Likewise an insect repellant which doubles up as sunscreen is a wise choice",
 };
@@ -39,6 +39,21 @@ const CLOTHING = {
   "Rain Jacket": false,
 };
 
+const CLOTHING_INFO = {  
+  "Rain Jacket": "A waterproof + windproof jacket is ideal. Check the waterproof rating of the jacket, it should be long enough cover below the waist and have a hood. Spray jackets, plastic raincoats and ponchos can be used if you're on a budget but they're not recommended due to lack of durability.",
+  "Mid layer/Fleece top": "This layer sits underneath your extenal jacket keeping you warm. Think of the thick fur of a polar bear. We'd recommend fleece or a woolly top can also work :)",
+  "Underwear": "'Going commando' means wearing no underwear. This is not recommended, however 1 pair of clean underwear per day will boost your morale :)",
+  "Socks": "1 pair of socks per day will keep your feet happy.",
+  "Shoes/Boots": "The weather and terrain should dictate the footwear chosen. If mild rain is predicted and terrain is rocky, gortex boots may be handy to keep your feet dry and ankles protected. If a flat established trail then basic sneakers will work",
+  "Camp Shoes": "",
+  "Hiking pants/Shorts": "Something that doesn't chafe, is lightweight and comfortable is recommended. Ideally 'map' or side pockets are also useful. Would recommend cargo pants over jeans.",
+  "Hat": "This is personal preference, because how your feel inside ",
+  "Beanie": "",
+  "Sunglasses": "",
+  "Shirts": "",
+  "Thermals": "",
+};
+
 const FOOD = {
   "Breakfast": false,
   "Lunch": false,
@@ -53,7 +68,7 @@ const FOOD_INFO = {
   "Snacks": "Cereal/Energy bars, Dried Fruit and Nuts, Trail Mix, Fruit packs, Rice Crackers Chocolate bars :)"
 }
 
-const EXTRAS = {
+const MISC = {
   "Tent": false,
   "Stove": false,
   "Fuel": false,
@@ -108,7 +123,7 @@ class Category extends React.Component {
         categoryInfo = FOOD_INFO;
         break;
       default: 
-        category = EXTRAS; break;
+        category = MISC; break;
     };
 
     return ( 
@@ -177,7 +192,7 @@ function App() {
         <Category name="Essentials" />
         <Category name="Food" />
         <Category name="Clothing" />
-        <Category name="Extras" />
+        <Category name="Misc" />
     </div>
   );
 }
