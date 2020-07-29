@@ -113,7 +113,7 @@ const MISC = {
   "Pots/Pans": false,
   "Notepad/pen(cil)": false,
   "Compass": false,
-  "First aid kit/Meds": false,
+  "First aid kit": false,
   "Headlamp": false,
   "Multi Tool/Knife": false,
   "Liner/Garbage bag": false,
@@ -130,7 +130,7 @@ const MISC_INFO = {
   "Lighter/Matches": "Windproof matches work best if you had to choose",
   "Pots/Pans": "For cooking. Aluminium is great for weight and cost, titanium is also good however can be expensive, avoid stainless steel if possible due to weight",
   "Notepad/pen(cil)": "Map route planning is usually necessary, a small notebook and pencil/pen will help you record significant events. Don't forget your other Duke of Ed paperwork",
-  "First aid kit/Meds": "Usually carried by a coordinator/supervisor. However you may want to keep plasters, antiseptic wipes on standby. Don't forget to bring medication",
+  "First aid kit": "Usually carried by a coordinator/supervisor. However you may want to keep plasters, antiseptic wipes on standby. Don't forget to bring medication",
   "Compass": "With a map usually comes a compass. We recommend carrying this on your person, preferably in the map/side pocket of your hiking pants when to be frequently used",
   "Headlamp": "Choose a headlamp over a torch so your hands can remain free. You'll be glad you did when you're eating and need light",
   "Multi Tool": "Opt for a multi tool over a knife. Something like a small Swiss Army knife or Leatherman will do the trick :)",
@@ -148,7 +148,7 @@ const MISC_ICONS = {
   "Lighter/Matches": ICON_PATH + "match.svg",
   "Pots/Pans": ICON_PATH + "pan.svg",
   "Notepad/pen(cil)": ICON_PATH + "notepad.svg",
-  "First aid kit/Meds": ICON_PATH + "first-aid-kit.svg",
+  "First aid kit": ICON_PATH + "first-aid-kit.svg",
   "Headlamp": ICON_PATH + "headlamp.svg",
   "Multi Tool/Knife": ICON_PATH + "swiss-army-knife.svg",
   "Liner/Garbage bag": ICON_PATH + "garbage-bag.svg",
@@ -159,14 +159,27 @@ const MISC_ICONS = {
   "Compass": ICON_PATH + "compass.svg",
 };
 
-function Disclaimer() {
+function AppInfo() {
   return (
-    <div className="px-3 pb-3"><b>Important:</b> This list is a guide for items you may need for your DofE expedition. By using this list you agree to our
-      <a href="https://www.trekoa.com/terms-and-conditions/" target="_blank"><b> Terms & Conditions</b></a> and <a href="https://www.trekoa.com/privacy-policy/" target="_blank"><b>Privacy Policy</b></a>
+    <div>
+      <h5 className="px-3 pb-2"><b>Important:</b> This list is a guide for items you may need on your DofE expedition. By using this list you agree to our
+        <a href="https://www.trekoa.com/terms-and-conditions/" target="_blank"><b> Terms & Conditions</b></a>
+      </h5>
+      <h5 className="px-3 pb-3"><b>To use:</b> View on phone, tick off each item as you pack, click info for our recommendations</h5>
     </div>
   )
 }
 
+function WeightInfo() {
+  return (
+    <div>
+      <h4 className="text-center">What do the coloured items mean?</h4>
+        <h5>Glad you asked! Experts suggest you should carry less than 20% of your body weight.</h5>
+        <h5>Consider removing/splitting some of the these items</h5>
+        <h5>Here's a little tool to help you out :)</h5>
+    </div>
+  )
+}
 
 class Headerbar extends React.Component {
   render() {
@@ -178,8 +191,6 @@ class Headerbar extends React.Component {
           </a>
           </div>
         <div className="col pr-4 text-right">
-          {/* add onclick handler */}
-          {/* add onclick handler */}
             <img className="header-button mt-3 pr-3" src="images/reset.svg" alt="reset"></img>
             <a href="http://www.trekoa.com"><img className="header-button mt-3" src="images/home.svg" alt="reset"></img></a>
         </div>
@@ -280,18 +291,28 @@ class Item extends React.Component {
     )}
 }
 
+class Calculator extends React.Component {
+  
+}
+
 function App() {
   return (
     <div className="container-fluid">
       <Headerbar />
-      <section className="row">
+      <section className="row app-info">
         <h1 className="col py-3 text-center font-weight-bold">Duke of Ed Checklist</h1>
-        <Disclaimer />
+        <AppInfo />
       </section>
+      <section>
         <Category name="Essentials" />
         <Category name="Clothing" />
         <Category name="Food" />
         <Category name="Misc" />
+      </section>
+      <section className="row app-info px-3 py-3">
+        <WeightInfo />
+        <Calculator />
+      </section>
     </div>
   )
 }
