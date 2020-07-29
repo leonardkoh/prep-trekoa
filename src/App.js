@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import { render } from '@testing-library/react';
 
 const ICON_PATH = "images/items/"
 
@@ -181,7 +180,7 @@ function AppInfo() {
   return (
     <div>
       <h5 className="px-3 pb-2"><b>Important:</b> This list is a guide for items you may need on your DofE expedition. By using this list you agree to our
-        <a href="https://www.trekoa.com/terms-and-conditions/" target="_blank"><b> Terms & Conditions</b></a>
+        <a href="https://www.trekoa.com/terms-and-conditions/" target="_blank" rel="noopener noreferrer"><b> Terms & Conditions</b></a>
       </h5>
       <h5 className="px-3 pb-3"><b>To use:</b> View on phone, tick off each item as you pack, click info for our recommendations</h5>
     </div>
@@ -292,7 +291,7 @@ class Item extends React.Component {
 
     return ( 
       <div className="row text-left" key={`${itemKey}-${itemCategory}`}>
-      <img src={itemIcon} className="col-2"></img>
+      <img src={itemIcon} className="col-2" alt="item-icon"></img>
       {
          itemKey in OPTIONAL_ITEMS ? <p className="col-6 pl-3 pt-1 optional-item">{itemKey}</p> : <p className="col-6 pl-3 pt-1">{itemKey}</p>
       }
