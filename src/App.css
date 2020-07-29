@@ -21,6 +21,9 @@ p {
   font-family: "Raleway";
   line-height: 0.7em;
 }
+input {
+  width: 100%
+}
 
 .header-style,.header-logo {
   background-color: #222625;
@@ -45,5 +48,6 @@ img, .tickbox-circle {
   color: lightslategray;
   font-weight: 100;
 }
-
-
+.optional-item {
+  color: #66b0f2;
+}
