@@ -313,7 +313,7 @@ class Calculator extends React.Component {
     super(props)
 
     this.state = {
-      weight: ""
+      weight: 0
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -331,7 +331,7 @@ class Calculator extends React.Component {
         </div>
         <div className="col-6">
           <h5>Pack weight</h5>
-          <h5><input className="text-center" type="text" value={(this.state.weight*0.2).toFixed(1)} readOnly></input></h5>
+          <h5><input className="text-center" type="text" value={`${(this.state.weight*0.2).toFixed(1)} kg`} readOnly></input></h5>
         </div>
       </div>
     )}
