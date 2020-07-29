@@ -1,6 +1,8 @@
 import React from 'react';
 import './App.css';
 
+const ICON_PATH = "images/items/"
+
 const ESSENTIALS = {
   "Rucksack": false,
   "Sleeping bag": false,
@@ -25,6 +27,18 @@ const ESSENTIALS_INFO = {
   "Insect repellant": "50ml tube. Likewise an insect repellant which doubles up as sunscreen is a wise choice",
 };
 
+const ESSENTIALS_ICONS = {
+  "Rucksack": ICON_PATH + "backpack.svg",
+  "Sleeping bag": ICON_PATH + "sleeping-bag.svg",
+  "Sleeping mat": ICON_PATH + "sleeping-mat.svg",
+  "Cutlery": ICON_PATH + "fork.svg",
+  "Plate/Bowl": ICON_PATH + "bowl.svg",
+  "Mug": ICON_PATH + "mug.svg",
+  "Water bottles": ICON_PATH + "water.svg",
+  "Sunscreen": ICON_PATH + "sunscreen.svg",
+  "Insect repellant": ICON_PATH + "insect-repellent.svg",
+}
+
 const FOOD = {
   "Breakfast": false,
   "Lunch": false,
@@ -38,6 +52,13 @@ const FOOD_INFO = {
   "Dinner": "Dehydrated meals (Back Country Cuisine), Rice, Cous Cous, Pasta/Risotto, Instant Potato Mash, Cup of Soup (Bronze = 1 Dinner, Silver = 2, Gold = 3)",
   "Snacks": "Cereal/Energy bars, Dried Fruit and Nuts, Trail Mix, Fruit packs, Rice Crackers Chocolate bars :)"
 }
+
+const FOOD_ICONS = {
+  "Breakfast": ICON_PATH + "breakfast.svg",
+  "Lunch": ICON_PATH + "lunch.svg",
+  "Dinner": ICON_PATH + "dinner.svg",
+  "Snacks": ICON_PATH + "snacks.svg",
+};
 
 const CLOTHING = {  
   "Rain jacket": false,
@@ -68,6 +89,21 @@ const CLOTHING_INFO = {
   "Beanie": "Take note on the thickness of the beanie and select according to the conditions",
   "Sunglasses": "A must item not only to reduce eye strain but also give it protection. Polarised sunglasses work well for cutting large amounts of glare",
 };
+
+const CLOTHING_ICONS = {
+  "Rain jacket": ICON_PATH + "raincoat.svg",
+  "Mid layer/Fleece top": ICON_PATH + "jumper.svg",
+  "Base layer/Shirts": ICON_PATH + "tshirt.svg",
+  "Thermals": ICON_PATH + "thermals.svg",
+  "Underwear": ICON_PATH + "underwear.svg",
+  "Socks": ICON_PATH + "socks.svg",
+  "Shoes/Boots": ICON_PATH + "boots.svg",
+  "Camp shoes": ICON_PATH + "crocs.svg",
+  "Hiking pants/Shorts": ICON_PATH + "shorts.svg",
+  "Hat": ICON_PATH + "hat.svg",
+  "Beanie": ICON_PATH + "beanie.svg",
+  "Sunglasses": ICON_PATH + "sunglasses.svg",
+}
 
 const MISC = {
   "Tent": false,
@@ -105,6 +141,33 @@ const MISC_INFO = {
   "Compass": false,
 };
 
+const MISC_ICONS = {
+  "Tent": ICON_PATH + "tent.svg",
+  "Stove": ICON_PATH + "stove.svg",
+  "Fuel": ICON_PATH + "fuel.svg",
+  "Lighter/Matches": ICON_PATH + "match.svg",
+  "Pots/Pans": ICON_PATH + "pan.svg",
+  "Notepad/pen(cil)": ICON_PATH + "notepad.svg",
+  "First aid kit/Meds": ICON_PATH + "first-aid-kit.svg",
+  "Headlamp": ICON_PATH + "headlamp.svg",
+  "Multi Tool/Knife": ICON_PATH + "swiss-army-knife.svg",
+  "Liner/Garbage bag": ICON_PATH + "garbage-bag.svg",
+  "Pack cover": ICON_PATH + "backpack.svg",
+  "Toiletries": ICON_PATH + "toothbrush.svg",
+  "Small towel": ICON_PATH + "towel.svg",
+  "Phone/Watch": ICON_PATH + "phone.svg",
+  "Compass": ICON_PATH + "compass.svg",
+};
+
+function Disclaimer() {
+  return (
+    <div className="px-3 pb-3"><b>Important:</b> This list is a guide for items you may need for your DofE expedition. By using this list you agree to our
+      <a href="https://www.trekoa.com/terms-and-conditions/" target="_blank"><b> Terms & Conditions</b></a> and <a href="https://www.trekoa.com/privacy-policy/" target="_blank"><b>Privacy Policy</b></a>
+    </div>
+  )
+}
+
+
 class Header extends React.Component {
   render() {
     return (
@@ -135,30 +198,35 @@ class Category extends React.Component {
   render() {
     let category = {};
     let categoryInfo = {};
+    let categoryIcons = {};
     switch (this.props.name) {
       case "Essentials": 
         category = ESSENTIALS; 
         categoryInfo = ESSENTIALS_INFO;
+        categoryIcons = ESSENTIALS_ICONS;
         break;
       case "Clothing": 
         category = CLOTHING; 
         categoryInfo = CLOTHING_INFO;
+        categoryIcons = CLOTHING_ICONS;
         break;
       case "Food": 
         category = FOOD; 
         categoryInfo = FOOD_INFO;
+        categoryIcons = FOOD_ICONS;
         break;
       default: 
         category = MISC; 
         categoryInfo = MISC_INFO;
+        categoryIcons = MISC_ICONS;
     };
 
     return ( 
     <section className="py-2">
-        <h2 className="row pl-3 pb-1 font-weight-bold"><u>{this.props.name}</u></h2>
+        <h2 className="row pl-3 pb-1"><b><u>{this.props.name}</u></b></h2>
         { Object.keys(category).map((k,v) => {
           return (
-              <Item k={k} cat={category} itemInfo={categoryInfo[k]}/>
+              <Item k={k} cat={category} itemInfo={categoryInfo[k]} itemIcon={categoryIcons[k]}/>
           )})
         }
     </section>
@@ -189,12 +257,14 @@ class Item extends React.Component {
   render() {
     const itemKey = this.props.k;
     const itemCategory= this.props.cat;
+    const itemIcon= this.props.itemIcon;
     const isChecked = this.state.isChecked;
     const showInfo = this.state.showInfo;
 
     return ( 
       <div className="row text-left" key={`${itemKey}-${itemCategory}`}>
-      <p className="col-8 pl-3 pt-1">{itemKey}</p>
+      <img src={itemIcon} className="col-2"></img>
+      <p className="col-6 pl-3 pt-1">{itemKey}</p>
         { isChecked ? 
           <input type="image" className="col-2 tickbox-circle" src="images/checked.svg" alt="tick-check" onClick={this.toggleChecked}></input> :
           <input type="image" className="col-2 tickbox-circle" src="images/unchecked.svg" alt="untick-check" onClick={this.toggleChecked}></input>
@@ -215,13 +285,13 @@ function App() {
       <Header />
       <section className="row">
         <h1 className="col py-3 text-center font-weight-bold">Duke of Ed Checklist</h1>
+        <Disclaimer />
       </section>
         <Category name="Essentials" />
         <Category name="Clothing" />
         <Category name="Food" />
         <Category name="Misc" />
     </div>
-  );
+  )
 }
-
 export default App;
