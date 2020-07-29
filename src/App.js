@@ -112,6 +112,7 @@ const MISC = {
   "Lighter/Matches": false,
   "Pots/Pans": false,
   "Notepad/pen(cil)": false,
+  "Compass": false,
   "First aid kit/Meds": false,
   "Headlamp": false,
   "Multi Tool/Knife": false,
@@ -120,7 +121,6 @@ const MISC = {
   "Toiletries": false,
   "Small towel": false,
   "Phone/Watch": false,
-  "Compass": false,
 };
 
 const MISC_INFO = {
@@ -130,15 +130,15 @@ const MISC_INFO = {
   "Lighter/Matches": "Windproof matches work best if you had to choose",
   "Pots/Pans": "For cooking. Aluminium is great for weight and cost, titanium is also good however can be expensive, avoid stainless steel if possible due to weight",
   "Notepad/pen(cil)": "Map route planning is usually necessary, a small notebook and pencil/pen will help you record significant events. Don't forget your other Duke of Ed paperwork",
-  "First aid kit/Meds": "Usually carried by a coordinator/supervisor. However you may want to keep plasters, antiseptic wipes on standby. Don't forget your medication!",
+  "First aid kit/Meds": "Usually carried by a coordinator/supervisor. However you may want to keep plasters, antiseptic wipes on standby. Don't forget to bring medication",
+  "Compass": "With a map usually comes a compass. We recommend carrying this on your person, preferably in the map/side pocket of your hiking pants when to be frequently used",
   "Headlamp": "Choose a headlamp over a torch so your hands can remain free. You'll be glad you did when you're eating and need light",
   "Multi Tool": "Opt for a multi tool over a knife. Something like a small Swiss Army knife or Leatherman will do the trick :)",
   "Liner/Garbage bag": "Waterproof your clothing by packing it into a garbage bag before placing it into your pack. Works every time :)",
   "Pack cover": "Rain or shine always take along a pack cover. You want to keep your pack dry if you can",
-  "Toiletries": "Toothbrush, toothpaste, toilet paper",
-  "Small towel": false,
-  "Phone/Watch": false,
-  "Compass": false,
+  "Toiletries": "Toothbrush, toothpaste, toilet paper, a couple of strands of dental floss and other necessary toiletries",
+  "Small towel": "Lightweight and packacble, this should be the size of a tea towel and no larger",
+  "Phone/Watch": "We recommend an analogue watch as the hands can be used to find the general direction should you lose your compass",
 };
 
 const MISC_ICONS = {
@@ -168,7 +168,7 @@ function Disclaimer() {
 }
 
 
-class Header extends React.Component {
+class Headerbar extends React.Component {
   render() {
     return (
       <div className="header-style row py-3">
@@ -177,11 +177,12 @@ class Header extends React.Component {
             <img className="header-logo" src="trekoa-logo.png" alt="trekoa-logo"></img>
           </a>
           </div>
-        <div className="col pr-5 text-right">
+        <div className="col pr-4 text-right">
           {/* add onclick handler */}
-            <img className="header-button mt-3" src="images/reset.svg" alt="reset"></img>
+          {/* add onclick handler */}
+            <img className="header-button mt-3 pr-3" src="images/reset.svg" alt="reset"></img>
+            <a href="http://www.trekoa.com"><img className="header-button mt-3" src="images/home.svg" alt="reset"></img></a>
         </div>
-
       </div>
     )
   }
@@ -282,7 +283,7 @@ class Item extends React.Component {
 function App() {
   return (
     <div className="container-fluid">
-      <Header />
+      <Headerbar />
       <section className="row">
         <h1 className="col py-3 text-center font-weight-bold">Duke of Ed Checklist</h1>
         <Disclaimer />
