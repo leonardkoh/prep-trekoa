@@ -178,7 +178,7 @@ const OPTIONAL_ITEMS = {
 
 function AppInfo() {
   return (
-    <div>
+    <div className="row px-3">
       <h5 className="px-3 pb-2"><b>Important:</b> This list is a guide for items you may need on your DofE expedition. By using this list you agree to our
         <a href="https://www.trekoa.com/terms-and-conditions/" target="_blank" rel="noopener noreferrer"><b> Terms & Conditions</b></a>
       </h5>
