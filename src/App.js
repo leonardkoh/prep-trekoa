@@ -62,7 +62,7 @@ const FOOD_ICONS = {
 
 const CLOTHING = {  
   "Rain jacket": false,
-  "Mid layer/Fleece top": false,
+  "Mid layer/Fleece": false,
   "Base layer/Shirts": false,
   "Thermals": false,
   "Underwear": false,
@@ -77,7 +77,7 @@ const CLOTHING = {
 
 const CLOTHING_INFO = {  
   "Rain jacket": "This layer should be waterproof and windproof. Gortex is king. Check the waterproof rating of the jacket, it should be long enough cover below the waist and have a hood. Spray jackets, plastic raincoats and ponchos can be used if you're on a budget but they're not recommended due to lack of durability",
-  "Mid layer/Fleece top": "This layer sits underneath your extenal jacket and keeps you warm. Effective layering is key, not how much clothing your pack. Think of the thick fur of a polar bear. We'd recommend fleece or a woolly top :)",
+  "Mid layer/Fleece": "This layer sits underneath your extenal jacket and keeps you warm. Effective layering is key, not how much clothing your pack. Think of the thick fur of a polar bear. We'd recommend fleece or a woolly top :)",
   "Base layer/Shirts": "This layer sits underneath your mid layer and should wick away moisture keeping your dry. Ultralight hikers take a 1x 'wet' and 1x 'dry' set of clothing. Consider this to reduce the weight of your pack. Wool is best, then synthetic then cotton due to moisture wicking properties. Collars preferred, no singlets.",
   "Thermals": "If cold weather with windchill is expected, consider taking a set of thermals. Thermals should be snug and not constrictive",
   "Underwear": "'Going commando' means wearing no underwear. This is not recommended, however 1 pair of clean underwear per day will boost your morale :)",
@@ -92,7 +92,7 @@ const CLOTHING_INFO = {
 
 const CLOTHING_ICONS = {
   "Rain jacket": ICON_PATH + "raincoat.svg",
-  "Mid layer/Fleece top": ICON_PATH + "jumper.svg",
+  "Mid layer/Fleece": ICON_PATH + "jumper.svg",
   "Base layer/Shirts": ICON_PATH + "tshirt.svg",
   "Thermals": ICON_PATH + "thermals.svg",
   "Underwear": ICON_PATH + "underwear.svg",
