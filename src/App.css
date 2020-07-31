@@ -25,6 +25,10 @@ input {
   width: 100%
 }
 
+.container-fluid {
+  padding: 0px
+}
+
 .header-style,.header-logo {
   background-color: #222625;
 }

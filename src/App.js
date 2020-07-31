@@ -192,7 +192,7 @@ function WeightInfo() {
   return (
     <div className="pt-1">
       <h4 className="text-center pb-1">What do the coloured items mean?</h4>
-        <h5>Glad you asked! Experts suggest you should carry less than 20% of your body weight.</h5>
+      <div><h5>Glad you asked! Experts suggest you should carry less than 20% of your body weight.</h5></div>
         <h5 className="pb-1">Consider removing or reducing some of the these items</h5>
     </div>    
   )
@@ -201,7 +201,7 @@ function WeightInfo() {
 class Headerbar extends React.Component {
   render() {
     return (
-      <div className="header-style row py-3">
+      <div className="header-style row py-3 px-3">
           <div className="col pl-2">
           <a href="http://www.trekoa.com">
             <img className="header-logo" src="trekoa-logo.png" alt="trekoa-logo"></img>
@@ -342,17 +342,17 @@ function App() {
   return (
     <div className="container-fluid">
       <Headerbar />
-      <section className="row app-info">
+      <section className="row app-info px-3">
         <h1 className="col py-3 text-center font-weight-bold">Duke of Ed Checklist</h1>
         <AppInfo />
       </section>
-      <section>
+      <section className="row mx-3">
         <Category name="Essentials" />
         <Category name="Clothing" />
         <Category name="Food" />
         <Category name="Misc" />
       </section>
-      <section className="row app-info px-3 py-3">
+      <section className="app-info px-3 py-3">
         <WeightInfo />
         <Calculator />
       </section>
