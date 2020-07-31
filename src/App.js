@@ -124,7 +124,7 @@ const MISC = {
 };
 
 const MISC_INFO = {
-  "Tent": "If this is supplied, then happy days. Don't forget tent pegs :)",
+  "Tent": "If this is supplied, then happy days. Don't forget the tent pegs :)",
   "Stove": "Liquid fuel stoves are preferred, check with your organiser on whether this is supplied",
   "Fuel": "Fuel is best carried in a dedicated fuel bottle, you don't really want this leaking in your pack",
   "Lighter/Matches": "Windproof matches work best if you had to choose",
@@ -133,7 +133,7 @@ const MISC_INFO = {
   "First aid kit": "Usually carried by a coordinator/supervisor. However you may want to keep plasters, antiseptic wipes on standby. Don't forget to bring medication",
   "Compass": "With a map usually comes a compass. We recommend carrying this on your person, preferably in the map/side pocket of your hiking pants when to be frequently used",
   "Headlamp": "Choose a headlamp over a torch so your hands can remain free. You'll be glad you did when you're eating and need light",
-  "Multi Tool": "Opt for a multi tool over a knife. Something like a small Swiss Army knife or Leatherman will do the trick :)",
+  "Multi Tool/Knife": "Opt for a multi tool over a knife. Something like a small Swiss Army knife or Leatherman will do the trick :)",
   "Liner/Garbage bag": "Waterproof your clothing by packing it into a garbage bag before placing it into your pack. Works every time :)",
   "Pack cover": "Rain or shine always take along a pack cover. You want to keep your pack dry if you can",
   "Toiletries": "Toothbrush, toothpaste, toilet paper, a couple of strands of dental floss and other necessary toiletries",
@@ -255,7 +255,7 @@ class Category extends React.Component {
         <h2 className="row pl-3 pb-1"><b><u>{this.props.name}</u></b></h2>
         { Object.keys(category).map((k,v) => {
           return (
-              <Item k={k} cat={category} itemInfo={categoryInfo[k]} itemIcon={categoryIcons[k]}/>
+              <div key={`${k}${category}`}><Item k={k} itemInfo={categoryInfo[k]} itemIcon={categoryIcons[k]}/></div>
           )})
         }
     </section>
@@ -285,13 +285,12 @@ class Item extends React.Component {
   }
   render() {
     const itemKey = this.props.k;
-    const itemCategory= this.props.cat;
     const itemIcon= this.props.itemIcon;
     const isChecked = this.state.isChecked;
     const showInfo = this.state.showInfo;
 
     return ( 
-      <div className="row text-left" key={`${itemKey}-${itemCategory}`}>
+      <div className="row text-left">
       <img src={itemIcon} className="col-2" alt="item-icon"></img>
       {
          itemKey in OPTIONAL_ITEMS ? <p className="col-6 pl-3 pt-1 optional-item">{itemKey}</p> : <p className="col-6 pl-3 pt-1">{itemKey}</p>
