@@ -155,7 +155,7 @@ class Calculator extends React.Component {
       <div className="row px-2 text-center">
         <div className="col-6">
         <h5>My weight</h5>
-        <h5><input className="text-center" type="text" placeholder="kg" value={this.state.weight} onChange={this.handleChange}></input></h5>
+        <h5><input className="text-center" type="text" value={`${this.state.weight} kg`} onChange={this.handleChange}></input></h5>
         </div>
         <div className="col-6">
           <h5>Pack weight</h5>
