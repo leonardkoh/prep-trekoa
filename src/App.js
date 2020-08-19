@@ -11,7 +11,7 @@ function AppInfo() {
       <h5 className="px-3 pb-2"><b>Important:</b> This list is a guide for items you may need on your DofE expedition. By using this list you agree to our
         <a href="https://www.trekoa.com/terms-and-conditions/" target="_blank" rel="noopener noreferrer"><b> Terms & Conditions</b></a>
       </h5>
-      <h5 className="px-3 pb-3"><b>To use:</b> View on phone, tick off each item as you pack, click info for our recommendations</h5>
+      <h5 className="px-3"><b>To use:</b> <ul><li>View on phone</li><li>Tick off each item as you pack</li><li>Click info for our recommendations</li></ul></h5>
     </div>
   )
 }
