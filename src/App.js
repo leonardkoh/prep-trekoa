@@ -18,7 +18,7 @@ function AppInfo() {
 
 function WeightInfo() {
   return (
-    <div className="pt-1">
+    <div className="pt-1 pl-1">
       <h4 className="text-center pb-1">What do the coloured items mean?</h4>
       <div><h5>Glad you asked! Experts suggest you should carry less than 20% of your body weight.</h5></div>
         <h5 className="pb-1">Consider removing or reducing some of the these items</h5>
