@@ -30,7 +30,7 @@ class Headerbar extends React.Component {
   render() {
     return (
       <div className="header-style row py-3 px-3">
-          <div className="col pl-2">
+          <div className="col pl-3">
           <a href="http://www.trekoa.com">
             <img className="header-logo" src="trekoa-logo.png" alt="trekoa-logo"></img>
           </a>
@@ -154,8 +154,8 @@ class Calculator extends React.Component {
     return (
       <div className="row px-2 text-center">
         <div className="col-6">
-        <h5>My weight</h5>
-        <h5><input className="text-center" type="text" value={`${this.state.weight} kg`} onChange={this.handleChange}></input></h5>
+        <h5>My weight (kg)</h5>
+        <h5><input className="text-center" type="text" value={this.state.weight} onChange={this.handleChange}></input></h5>
         </div>
         <div className="col-6">
           <h5>Pack weight</h5>
@@ -169,11 +169,11 @@ function App() {
   return (
     <div className="container-fluid">
       <Headerbar />
-      <section className="row app-info px-3">
+      <section className="row app-info px-3 pl-2">
         <h1 className="col py-3 text-center font-weight-bold">Duke of Ed Checklist</h1>
         <AppInfo />
       </section>
-      <section className="row mx-3">
+      <section className="row mx-3 pl-1">
         <Category name="Essentials" />
         <Category name="Clothing" />
         <Category name="Food" />
